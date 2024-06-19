@@ -19,8 +19,16 @@ const server = new ApolloServer({
 });
 
 await server.start(); // Inicia o servidor Apollo
+
 server.applyMiddleware({ app });
 
 app.listen({ port: 4000 }, () => {
     console.log(`Servidor GraphQL está rodando na porta 4000${server.graphqlPath}`);
 });
+
+
+//insert user
+
+const query = `
+mu
+`
