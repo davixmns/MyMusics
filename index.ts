@@ -14,7 +14,7 @@ async function startServer() {
     await server.start();
     server.applyMiddleware({app});
     app.listen({port: 4000}, () => {
-        console.log(`Servidor GraphQL está rodando na porta 4000${server.graphqlPath}`);
+        console.log(`Servidor GraphQL iniciado em :4000${server.graphqlPath}`);
     });
 }
 
