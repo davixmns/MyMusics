@@ -1,8 +1,12 @@
 import {GraphQLID, GraphQLInt, GraphQLNonNull, GraphQLObjectType, GraphQLString} from "graphql";
-import {MusicType, PlaylistType, UserType} from "./types.js";
-import MusicModel from "./models/MusicModel.ts";
-import PlaylistModel from "./models/PlaylistModel.ts";
-import UserModel from "./models/UserModel.ts";
+import {UserModel} from "./models/UserModel";
+import {PlaylistModel} from "./models/PlaylistModel";
+import {MusicModel} from "./models/MusicModel";
+import {MusicType} from "./types/MusicType";
+import {PlaylistType} from "./types/PlaylistType";
+import {UserType} from "./types/UserType";
+import {UserRepository} from "./repositories/UserRepository";
+import {PlaylistRepository} from "./repositories/PlaylistRepository";
 
 // Mutations
 const Mutation = new GraphQLObjectType({
@@ -15,12 +19,7 @@ const Mutation = new GraphQLObjectType({
                 age: { type: new GraphQLNonNull(GraphQLInt) }
             },
             async resolve(parent, args) {
-                console.log('addUser')
-                let user = new UserModel({
-                    name: args.name,
-                    age: args.age
-                });
-                return user.save();
+                return await new UserRepository().create(args);
             }
         },
         addPlaylist: {
@@ -30,11 +29,7 @@ const Mutation = new GraphQLObjectType({
                 user_id: { type: new GraphQLNonNull(GraphQLID) }
             },
             async resolve(parent, args) {
-                let playlist = new PlaylistModel({
-                    name: args.name,
-                    user_id: args.user_id
-                });
-                return playlist.save();
+                return new PlaylistRepository().create(args);
             }
         },
         addMusic: {

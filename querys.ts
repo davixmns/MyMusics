@@ -1,7 +1,13 @@
 // Root Query
 import {GraphQLID, GraphQLList, GraphQLObjectType} from "graphql";
-import {MusicType, PlaylistType, UserType} from "./types.js";
-import User from "./models/UserModel.ts";
+
+import {UserModel} from "./models/UserModel";
+import {PlaylistModel} from "./models/PlaylistModel";
+import {MusicModel} from "./models/MusicModel";
+
+import {UserType} from "./types/UserType";
+import {PlaylistType} from "./types/PlaylistType";
+import {MusicType} from "./types/MusicType";
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
@@ -9,40 +15,40 @@ const RootQuery = new GraphQLObjectType({
         users: {
             type: new GraphQLList(UserType),
             async resolve(parent, args) {
-                return User.find({})
+                return UserModel.find({})
             }
         },
         playlists: {
             type: new GraphQLList(PlaylistType),
             async resolve(parent, args) {
-                return Playlist.find({})
+                return PlaylistModel.find({})
             }
         },
         musics: {
             type: new GraphQLList(MusicType),
             async resolve(parent, args) {
-                return Music.find({});
+                return MusicModel.find({});
             }
         },
         user: {
             type: UserType,
             args: {id: {type: GraphQLID}},
             async resolve(parent, args) {
-                return User.findById(args.id);
+                return UserModel.findById(args.id);
             }
         },
         playlist: {
             type: PlaylistType,
             args: {id: {type: GraphQLID}},
             async resolve(parent, args) {
-                return Playlist.findById(args.id);
+                return PlaylistModel.findById(args.id);
             }
         },
         music: {
             type: MusicType,
             args: {id: {type: GraphQLID}},
             async resolve(parent, args) {
-                return Music.findById(args.id);
+                return MusicModel.findById(args.id);
             }
         }
     }

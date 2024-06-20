@@ -1,15 +1,21 @@
-import { UserType } from "../types/UserType";
-import UserModel from "../models/UserModel";
-import { Repository } from "./Repository";
-import { Document } from 'mongoose';
+import {UserModel} from "../models/UserModel";
 
-// Define the user document interface
-interface IUserDocument extends UserType, Document {}
-
-class UserRepository extends Repository<IUserDocument> {
-    constructor() {
-        super(UserModel);
-    }
+export interface IUserRepository {
+    getAll(): Promise<any[]>;
+    getById(id: string): Promise<any>;
+    create(user: any): Promise<any>;
 }
 
-export default new UserRepository();
+export class UserRepository implements IUserRepository {
+    create(user: any): Promise<any> {
+        return UserModel.create(user);
+    }
+
+    getAll(): Promise<any[]> {
+        return UserModel.find({});
+    }
+
+    getById(id: string): Promise<any> {
+        return UserModel.findById(id);
+    }
+}
