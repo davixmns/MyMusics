@@ -1,5 +1,5 @@
 
-import {IMusicRepository} from "../../repositories/IMusicRepository";
+import {IMusicRepository} from "../../interfaces/repositories/IMusicRepository";
 import {GraphQLInt, GraphQLNonNull, GraphQLString} from "graphql";
 import {MusicType} from "../types/MusicType";
 

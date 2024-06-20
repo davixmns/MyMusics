@@ -1,7 +1,7 @@
 import express from 'express';
 import {ApolloServer} from 'apollo-server-express';
 import {connectToDatabase} from "./database/database";
-import schema from './schema'
+import schema from './graphql/schemas/schema'
 
 const app = express();
 

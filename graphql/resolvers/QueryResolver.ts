@@ -1,16 +1,14 @@
 import { GraphQLObjectType } from 'graphql';
-import {IUserRepository} from "../../repositories/IUserRepository";
 import {UserRepository} from "../../repositories/UserRepository";
 import {UserQueries} from "../queries/UserQueries";
 import {PlaylistRepository} from "../../repositories/PlaylistRepository";
-import {IPlaylistRepository} from "../../repositories/IPlaylistRepository";
 import {PlaylistQueries} from "../queries/PlaylistQueries";
+import {MusicRepository} from "../../repositories/MusicRepository";
+import {MusicQueries} from "../queries/MusicQueries";
 
-const userRepository: IUserRepository = new UserRepository();
-const playlistRepository: IPlaylistRepository = new PlaylistRepository();
-
-const userQueries = new UserQueries(userRepository);
-const playlistQueries = new PlaylistQueries(playlistRepository);
+const userQueries = new UserQueries(new UserRepository());
+const playlistQueries = new PlaylistQueries(new PlaylistRepository());
+const musicQueries = new MusicQueries(new MusicRepository());
 
 export const QueryResolver = new GraphQLObjectType({
     name: 'Query',
@@ -21,6 +19,7 @@ export const QueryResolver = new GraphQLObjectType({
         playlists: playlistQueries.playlists(),
         playlist: playlistQueries.playlist(),
 
-
+        musics: musicQueries.musics(),
+        music: musicQueries.music(),
     },
 });

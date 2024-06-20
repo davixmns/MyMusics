@@ -1,6 +1,6 @@
 import {GraphQLID, GraphQLList} from "graphql";
 import {UserType} from "../types/UserType";
-import {IUserRepository} from "../../repositories/IUserRepository";
+import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 
 class UserQueries {
     private userRepository: IUserRepository

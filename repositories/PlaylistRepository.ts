@@ -1,5 +1,5 @@
 import {PlaylistModel} from "../models/PlaylistModel";
-import {IPlaylistRepository} from "./IPlaylistRepository";
+import {IPlaylistRepository} from "../interfaces/repositories/IPlaylistRepository";
 
 export class PlaylistRepository implements IPlaylistRepository {
     async create(playlist: any): Promise<any> {

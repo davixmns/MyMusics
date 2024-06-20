@@ -1,7 +1,6 @@
-import {IUserRepository} from "../../repositories/IUserRepository";
+import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 import {GraphQLInt, GraphQLNonNull, GraphQLString} from "graphql";
 import {UserType} from "../types/UserType";
-
 
 class UserMutations {
     private userRepository: IUserRepository;

@@ -1,4 +1,4 @@
-import {IPlaylistRepository} from "../../repositories/IPlaylistRepository";
+import {IPlaylistRepository} from "../../interfaces/repositories/IPlaylistRepository";
 import {PlaylistType} from "../types/PlaylistType";
 import {GraphQLID, GraphQLNonNull, GraphQLString} from "graphql";
 

@@ -1,7 +1,7 @@
 {
   "name": "my-spotfy",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "server.ts",
   "license": "MIT",
   "dependencies": {
     "apollo-server-express": "^3.13.0",
@@ -14,7 +14,7 @@
     "typescript": "^5.4.5"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node index.ts"
+    "start": "nodemon --exec ts-node server.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
