@@ -1,10 +1,5 @@
 import {PlaylistModel} from "../models/PlaylistModel";
-
-export interface IPlaylistRepository {
-    getAll(): Promise<any[]>;
-    getById(id: string): Promise<any>;
-    create(playlist: any): Promise<any>;
-}
+import {IPlaylistRepository} from "./IPlaylistRepository";
 
 export class PlaylistRepository implements IPlaylistRepository {
     async create(playlist: any): Promise<any> {
@@ -17,6 +12,14 @@ export class PlaylistRepository implements IPlaylistRepository {
 
     async getById(id: string): Promise<any> {
         return PlaylistModel.findById(id);
+    }
+
+    async addMusicToPlaylist(playlist_id: string, music_id: string): Promise<any> {
+        return PlaylistModel.findByIdAndUpdate(
+            playlist_id,
+            {$push: {musics: music_id}},
+            {new: true}
+        );
     }
 }
 

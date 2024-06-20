@@ -5,9 +5,9 @@ import {UserModel} from "./models/UserModel";
 import {PlaylistModel} from "./models/PlaylistModel";
 import {MusicModel} from "./models/MusicModel";
 
-import {UserType} from "./types/UserType";
-import {PlaylistType} from "./types/PlaylistType";
-import {MusicType} from "./types/MusicType";
+import {UserType} from "./graphql/types/UserType";
+import {PlaylistType} from "./graphql/types/PlaylistType";
+import {MusicType} from "./graphql/types/MusicType";
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',

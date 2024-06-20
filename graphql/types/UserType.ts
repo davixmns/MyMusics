@@ -1,5 +1,5 @@
 import {GraphQLID, GraphQLInt, GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
-import {PlaylistModel} from "../models/PlaylistModel";
+import {PlaylistModel} from "../../models/PlaylistModel";
 import {PlaylistType} from "./PlaylistType";
 
 export const UserType: GraphQLObjectType = new GraphQLObjectType({

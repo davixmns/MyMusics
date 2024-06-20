@@ -1,6 +1,6 @@
 import {GraphQLID, GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
-import {UserModel} from "../models/UserModel";
-import {MusicModel} from "../models/MusicModel";
+import {UserModel} from "../../models/UserModel";
+import {MusicModel} from "../../models/MusicModel";
 import {MusicType} from "./MusicType";
 import {UserType} from "./UserType";
 

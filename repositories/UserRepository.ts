@@ -1,10 +1,5 @@
 import {UserModel} from "../models/UserModel";
-
-export interface IUserRepository {
-    getAll(): Promise<any[]>;
-    getById(id: string): Promise<any>;
-    create(user: any): Promise<any>;
-}
+import {IUserRepository} from "./IUserRepository";
 
 export class UserRepository implements IUserRepository {
     create(user: any): Promise<any> {
