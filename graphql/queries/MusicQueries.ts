@@ -1,6 +1,6 @@
 import {IMusicRepository} from "../../interfaces/repositories/IMusicRepository";
 import {MusicType} from "../types/MusicType";
-import {GraphQLID, GraphQLNonNull} from "graphql";
+import {GraphQLID, GraphQLList, GraphQLNonNull} from "graphql";
 
 class MusicQueries {
     private musicRepository: IMusicRepository;
@@ -11,8 +11,8 @@ class MusicQueries {
 
     musics() {
         return {
-            type: MusicType,
-            resolve: async (parent: any, args: any) : Promise<any> => {
+            type: new GraphQLList(MusicType),
+            resolve: async (parent: any, args: any) : Promise<any[]> => {
                 return await this.musicRepository.getAll();
             }
         }

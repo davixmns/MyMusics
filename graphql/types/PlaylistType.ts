@@ -1,8 +1,8 @@
 import {GraphQLID, GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
-import {UserModel} from "../../models/UserModel";
 import {MusicModel} from "../../models/MusicModel";
 import {MusicType} from "./MusicType";
 import {UserType} from "./UserType";
+import {userQueries} from "../resolvers/QueryResolver";
 
 export const PlaylistType = new GraphQLObjectType({
     name: 'Playlist',
@@ -12,7 +12,7 @@ export const PlaylistType = new GraphQLObjectType({
         user: {
             type: UserType,
             async resolve(parent, args) {
-                return UserModel.findById(parent.user_id);
+                return await userQueries.user().resolve(parent, {id: parent.user_id});
             }
         },
         musics: {

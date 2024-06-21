@@ -2,7 +2,7 @@ import {GraphQLID, GraphQLList} from "graphql";
 import {UserType} from "../types/UserType";
 import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 
-class UserQueries {
+export class UserQueries {
     private userRepository: IUserRepository
 
     constructor(userRepository: IUserRepository) {
@@ -28,5 +28,3 @@ class UserQueries {
         }
     }
 }
-
-export {UserQueries}

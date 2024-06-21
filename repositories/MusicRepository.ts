@@ -1,8 +1,9 @@
 import {MusicModel} from "../models/MusicModel";
 import {IMusicRepository} from "../interfaces/repositories/IMusicRepository";
+import {Music} from "../interfaces/models/Music";
 
 export class MusicRepository implements IMusicRepository {
-    async create(music: any): Promise<any> {
+    async create(music: Music): Promise<any> {
         return MusicModel.create(music);
     }
 

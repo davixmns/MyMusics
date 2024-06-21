@@ -1,6 +1,6 @@
 import {IPlaylistRepository} from "../../interfaces/repositories/IPlaylistRepository";
 import {PlaylistType} from "../types/PlaylistType";
-import {GraphQLID, GraphQLNonNull} from "graphql";
+import {GraphQLID, GraphQLList, GraphQLNonNull} from "graphql";
 
 class PlaylistQueries {
     private playlistRepository: IPlaylistRepository;
@@ -11,7 +11,7 @@ class PlaylistQueries {
 
     playlists() {
         return {
-            type: PlaylistType,
+            type: new GraphQLList(PlaylistType),
             resolve: async (parent: any, args: any) : Promise<any> => {
                 return await this.playlistRepository.getAll();
             }
