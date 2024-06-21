@@ -11,6 +11,10 @@ export class MusicRepository implements IMusicRepository {
         return MusicModel.find({});
     }
 
+    async getAllByPlaylistId(playlistId: string): Promise<any[]> {
+        return MusicModel.find({playlist: playlistId});
+    }
+
     async getById(id: string): Promise<any> {
         return MusicModel.findById(id);
     }

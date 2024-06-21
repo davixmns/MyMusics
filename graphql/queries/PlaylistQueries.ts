@@ -1,17 +1,21 @@
 import {IPlaylistRepository} from "../../interfaces/repositories/IPlaylistRepository";
-import {PlaylistType} from "../types/PlaylistType";
-import {GraphQLID, GraphQLList, GraphQLNonNull} from "graphql";
+import {createPlaylistType} from "../types/PlaylistType";
+import {GraphQLID, GraphQLList, GraphQLNonNull, GraphQLObjectType} from "graphql";
+import {IMusicRepository} from "../../interfaces/repositories/IMusicRepository";
+import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 
 class PlaylistQueries {
-    private playlistRepository: IPlaylistRepository;
+    private readonly playlistRepository: IPlaylistRepository;
+    private readonly playlistType: GraphQLObjectType
 
-    constructor(playlistRepository: IPlaylistRepository) {
+    constructor(userRepository: IUserRepository, playlistRepository: IPlaylistRepository, musicRepository: IMusicRepository) {
         this.playlistRepository = playlistRepository;
+        this.playlistType = createPlaylistType(userRepository, musicRepository);
     }
 
     playlists() {
         return {
-            type: new GraphQLList(PlaylistType),
+            type: new GraphQLList(this.playlistType),
             resolve: async (parent: any, args: any) : Promise<any> => {
                 return await this.playlistRepository.getAll();
             }
@@ -20,7 +24,7 @@ class PlaylistQueries {
 
     playlist() {
         return {
-            type: PlaylistType,
+            type: this.playlistType,
             args: {
                 id: { type: new GraphQLNonNull(GraphQLID) }
             },

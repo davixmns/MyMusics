@@ -7,7 +7,7 @@ import {PlaylistQueries} from "../queries/PlaylistQueries";
 import {MusicQueries} from "../queries/MusicQueries";
 
 export const userQueries = new UserQueries(new UserRepository());
-export const playlistQueries = new PlaylistQueries(new PlaylistRepository());
+export const playlistQueries = new PlaylistQueries(new PlaylistRepository(), new MusicRepository());
 export const musicQueries = new MusicQueries(new MusicRepository());
 
 export const QueryResolver = new GraphQLObjectType({
@@ -22,4 +22,4 @@ export const QueryResolver = new GraphQLObjectType({
         musics: musicQueries.musics(),
         music: musicQueries.music(),
     },
-});
+})

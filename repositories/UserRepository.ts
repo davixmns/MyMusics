@@ -1,16 +1,17 @@
 import {UserModel} from "../models/UserModel";
 import {IUserRepository} from "../interfaces/repositories/IUserRepository";
+import {User} from "../interfaces/models/User";
 
 export class UserRepository implements IUserRepository {
-    create(user: any): Promise<any> {
-        return UserModel.create(user);
+    async create(user: User): Promise<any> {
+        return await UserModel.create(user);
     }
 
-    getAll(): Promise<any[]> {
+    async getAll(): Promise<any[]> {
         return UserModel.find({});
     }
 
-    getById(id: string): Promise<any> {
+    async getById(id: string): Promise<any> {
         return UserModel.findById(id);
     }
 }
