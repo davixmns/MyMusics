@@ -8,6 +8,10 @@ export class PlaylistRepository implements IPlaylistRepository {
         return PlaylistModel.find({});
     }
 
+    async getAllByUserId(user_id: string): Promise<any[]> {
+        return PlaylistModel.find({user_id});
+    }
+
     async getById(id: string): Promise<any> {
         return PlaylistModel.findById(id);
     }
