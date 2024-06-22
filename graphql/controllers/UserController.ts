@@ -1,15 +1,16 @@
 import {Mutation, Query, Resolver} from "type-graphql";
-import {UserType} from "../graphql/types/UserType";
-import {IUserRepository} from "../interfaces/repositories/IUserRepository";
-import {IUser} from "../interfaces/models/IUser";
+import {UserType} from "../types/UserType";
+import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
+import {IUser} from "../../interfaces/models/IUser";
+import {Inject, Service} from "typedi";
 
+@Service()
 @Resolver(UserType)
 export class UserController {
-    private userRepository: IUserRepository;
 
-    constructor(userRepository: IUserRepository) {
-        this.userRepository = userRepository;
-    }
+    constructor(
+        @Inject("IUserRepository") private userRepository: IUserRepository
+    ) {}
 
     @Query(() => [UserType])
     async users() {

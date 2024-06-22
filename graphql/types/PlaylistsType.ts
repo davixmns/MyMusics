@@ -7,10 +7,10 @@ export class PlaylistsType implements IPlaylist {
     @Field(() => ID, {nullable: true})
     _id: string;
 
-    @Field()
+    @Field(() => String)
     name: string;
 
-    @Field()
+    @Field(() => String)
     user_id: string;
 
     @Field(() => [MusicType])

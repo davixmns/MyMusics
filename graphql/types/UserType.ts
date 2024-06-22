@@ -7,10 +7,10 @@ export class UserType implements IUser {
     @Field(() => ID, {nullable: true})
     _id?: string
 
-    @Field()
+    @Field(() => String)
     name: string
 
-    @Field()
+    @Field(() => Number)
     age: number
 
     @Field(() => [PlaylistsType])

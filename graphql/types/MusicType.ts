@@ -6,6 +6,6 @@ export class MusicType implements IMusic {
     @Field(() => ID, {nullable: true})
     _id: any
 
-    @Field()
+    @Field(() => String)
     name: string
 }

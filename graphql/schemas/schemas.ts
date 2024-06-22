@@ -1,8 +1,10 @@
 import {buildSchema} from "type-graphql";
-import {UserController} from "../../controllers/UserController";
+import {UserController} from "../controllers/UserController";
+import {Container} from "typedi";
 
-async function createSchema() {
+export async function createSchema() {
     return await buildSchema({
         resolvers: [UserController],
+        container: Container
     });
 }
