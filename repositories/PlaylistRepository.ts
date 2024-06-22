@@ -1,7 +1,7 @@
 import {PlaylistModel} from "../models/PlaylistModel";
 import {IPlaylistRepository} from "../interfaces/repositories/IPlaylistRepository";
 import {UserModel} from "../models/UserModel";
-import {Playlist} from "../interfaces/models/Playlist";
+import {IPlaylist} from "../interfaces/models/IPlaylist";
 
 export class PlaylistRepository implements IPlaylistRepository {
     async getAll(): Promise<any[]> {
@@ -16,7 +16,7 @@ export class PlaylistRepository implements IPlaylistRepository {
         return PlaylistModel.findById(id);
     }
 
-    async create(playlist: Playlist): Promise<any> {
+    async create(playlist: IPlaylist): Promise<any> {
         const newPlaylist = await PlaylistModel.create(playlist)
         await UserModel.findByIdAndUpdate(
             playlist.user_id,

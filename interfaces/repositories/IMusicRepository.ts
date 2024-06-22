@@ -1,8 +1,8 @@
-import {Music} from "../models/Music";
+import {IMusic} from "../models/IMusic";
 
 export interface IMusicRepository {
-    create(music: Music): Promise<any>;
-    getAll(): Promise<Music[]>;
-    getAllByPlaylistId(playlistId: string): Promise<Music[]>;
-    getById(id: string): Promise<Music | null>;
+    create(music: IMusic): Promise<any>;
+    getAll(): Promise<IMusic[]>;
+    getAllByPlaylistId(playlistId: string): Promise<IMusic[]>;
+    getById(id: string): Promise<IMusic | null>;
 }

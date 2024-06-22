@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import {Music} from "../interfaces/models/Music";
+import {IMusic} from "../interfaces/models/IMusic";
 
-const MusicSchema = new mongoose.Schema<Music>({
+const MusicSchema = new mongoose.Schema<IMusic>({
     name: String,
 });
 

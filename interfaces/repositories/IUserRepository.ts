@@ -1,7 +1,7 @@
-import {User} from "../models/User";
+import {IUser} from "../models/IUser";
 
 export interface IUserRepository {
-    getAll(): Promise<any[]>;
-    getById(id: string): Promise<any>;
-    create(user: User): Promise<any>;
+    findAll(): Promise<any[]>;
+    findById(id: string): Promise<any>;
+    create(user: IUser): Promise<any>;
 }

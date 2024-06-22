@@ -1,26 +1,18 @@
-import {GraphQLID, GraphQLInt, GraphQLList, GraphQLObjectType, GraphQLString} from "graphql";
-import {PlaylistModel} from "../../models/PlaylistModel";
-import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
-import {createPlaylistType} from "./PlaylistType";
-import {IMusicRepository} from "../../interfaces/repositories/IMusicRepository";
-import {IPlaylistRepository} from "../../interfaces/repositories/IPlaylistRepository";
+import {Field, ID, ObjectType} from "type-graphql";
+import {IUser} from "../../interfaces/models/IUser";
+import {PlaylistsType} from "./PlaylistsType";
 
+@ObjectType()
+export class UserType implements IUser {
+    @Field(() => ID, {nullable: true})
+    _id?: string
 
-export function createUserType(userRepository: IUserRepository, musicRepository: IMusicRepository, playlistRepository: IPlaylistRepository) {
-    const PlaylistType = createPlaylistType(userRepository, musicRepository);
+    @Field()
+    name: string
 
-    return new GraphQLObjectType({
-        name: 'User',
-        fields: () => ({
-            id: {type: GraphQLID},
-            name: {type: GraphQLString},
-            age: {type: GraphQLInt},
-            playlists: {
-                type: new GraphQLList(PlaylistType),
-                async resolve(parent, args) {
-                    return await playlistRepository.getAllByUserId(parent.id);
-                }
-            }
-        })
-    });
+    @Field()
+    age: number
+
+    @Field(() => [PlaylistsType])
+    playlists: string[]
 }

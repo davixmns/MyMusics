@@ -1,9 +1,11 @@
-import {GraphQLID, GraphQLObjectType, GraphQLString} from "graphql";
+import {Field, ID, ObjectType} from "type-graphql";
+import {IMusic} from "../../interfaces/models/IMusic";
 
-export const MusicType: GraphQLObjectType = new GraphQLObjectType({
-    name: 'Music',
-    fields: () => ({
-        id: { type: GraphQLID },
-        name: { type: GraphQLString },
-    })
-});
+@ObjectType()
+export class MusicType implements IMusic {
+    @Field(() => ID, {nullable: true})
+    _id: any
+
+    @Field()
+    name: string
+}
