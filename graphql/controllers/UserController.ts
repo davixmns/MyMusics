@@ -1,4 +1,4 @@
-import {Mutation, Query, Resolver} from "type-graphql";
+import {Arg, Mutation, Query, Resolver} from "type-graphql";
 import {UserType} from "../types/UserType";
 import {IUser} from "../../interfaces/models/IUser";
 import {Inject, Service} from "typedi";
