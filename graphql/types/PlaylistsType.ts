@@ -1,6 +1,7 @@
 import {Field, ID, ObjectType} from "type-graphql";
 import {IPlaylist} from "../../interfaces/models/IPlaylist";
 import {MusicType} from "./MusicType";
+import {UserType} from "./UserType";
 
 @ObjectType()
 export class PlaylistsType implements IPlaylist {
@@ -10,9 +11,9 @@ export class PlaylistsType implements IPlaylist {
     @Field(() => String)
     name: string;
 
-    @Field(() => String)
-    user_id: string;
+    @Field(() => UserType)
+    user: UserType;
 
     @Field(() => [MusicType])
-    musics: string[];
+    musics: MusicType[];
 }

@@ -1,8 +1,8 @@
 import {Mutation, Query, Resolver} from "type-graphql";
 import {UserType} from "../types/UserType";
-import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 import {IUser} from "../../interfaces/models/IUser";
 import {Inject, Service} from "typedi";
+import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
 
 @Service()
 @Resolver(UserType)

@@ -1,6 +1,8 @@
+import {IMusic} from "./IMusic";
+import {IUser} from "./IUser";
 
 export interface IPlaylist {
     name: string;
-    user_id: string;
-    musics: string[];
+    user: IUser;
+    musics: IMusic[];
 }

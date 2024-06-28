@@ -14,5 +14,5 @@ export class UserType implements IUser {
     age: number
 
     @Field(() => [PlaylistsType])
-    playlists: string[]
+    playlists: PlaylistsType[]
 }
