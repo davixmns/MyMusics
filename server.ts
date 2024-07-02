@@ -16,7 +16,7 @@ async function startServer() {
             const server = new ApolloServer({schema});
             await server.start();
 
-            Container.set('IUserRepository', new UserRepository());
+            Container.set('UserRepository', new UserRepository());
 
             server.applyMiddleware({app});
             app.listen({port: 4000}, () => {

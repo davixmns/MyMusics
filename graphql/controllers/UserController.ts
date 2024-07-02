@@ -3,13 +3,14 @@ import {UserType} from "../types/UserType";
 import {IUser} from "../../interfaces/models/IUser";
 import {Inject, Service} from "typedi";
 import {IUserRepository} from "../../interfaces/repositories/IUserRepository";
+import {CreateUserInput} from "../inputs/CreateUserInput";
 
 @Service()
 @Resolver(UserType)
 export class UserController {
 
     constructor(
-        @Inject("IUserRepository") private userRepository: IUserRepository
+        @Inject("UserRepository") private userRepository: IUserRepository
     ) {}
 
     @Query(() => [UserType])
@@ -17,13 +18,13 @@ export class UserController {
         return await this.userRepository.findAll()
     }
 
-    @Query(() => UserType)
-    async user(id: string) {
+    @Query(() => UserType, {nullable: true})
+    async user(@Arg("id") id: string) {
         return await this.userRepository.findById(id)
     }
 
-    @Mutation(() => UserType)
-    async createUser(user: IUser) {
-        return await this.userRepository.create(user)
+    @Mutation(() => UserType, {nullable: true})
+    async createUser(@Arg("user") userInput: CreateUserInput) {
+        return await this.userRepository.create(userInput)
     }
 }
